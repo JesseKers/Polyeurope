@@ -19,16 +19,9 @@ class Database
         $this->setUpDatabase();
     }
 
-    protected function setUpDatabase()
+    protected function setUpDatabase(): void
     {
         try {
-            $dsn = http_build_query([
-                'host' => $this->host,
-                'port' => $this->port,
-                'dbname' => $this->dbname,
-                'charset' => $this->charset,
-            ], '', ';');
-
             $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->dbname;charset=$this->charset";
 
             $this->pdo = new PDO($dsn, $this->username, $this->password, [
