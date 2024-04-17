@@ -1,3 +1,5 @@
+CREATE DATABASE DB_PolyEurope;
+
 USE 'DB_PolyEurope';
 
 CREATE TABLE Deco (
