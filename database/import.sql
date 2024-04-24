@@ -1,16 +1,44 @@
 CREATE DATABASE DB_PolyEurope;
 
-USE 'DB_PolyEurope';
+USE `DB_PolyEurope`;
 
-CREATE TABLE DecoProducts (
+CREATE TABLE DecoProducts
+(
     ID int NOT NULL AUTO_INCREMENT,
     MalCode varchar(255),
     Size varchar(255),
     SizeFC varchar(255),
     SizeRod varchar(255),
     PRIMARY KEY (ID)
-
 );
+
+CREATE TABLE Company
+(
+    ID int NOT NULL AUTO_INCREMENT,
+    Name varchar(255),
+    Address varchar(255),
+    PostalCode varchar(255),
+    Country varchar(255),
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE Orders
+(
+    ID int NOT NULL AUTO_INCREMENT,
+    OrderID varchar(255),
+    `Order` text,
+    ClientID int,
+    FOREIGN KEY (ClientID) REFERENCES Company(ID),
+    PRIMARY KEY (ID)
+);
+
+INSERT INTO Company (Name, Address, PostalCode, Country)
+VALUES
+    ('Test bedrijf', 'straat 34', '1234zp', 'Netherlands');
+
+INSERT INTO Orders (OrderID, `Order`, ClientID)
+VALUES
+    ('1234', '{"orderInfo": {"orderId": "1234","clientName": "","orderDate": "2024-04-24","clientAddress": "123 Main Street, Anytown, USA","totalPrice": 500},"decoProducts": [{"productInfo1": {"Size": "8.000","Quantity": "12","Density": "Hard","Core": "Solid","SizeFc": "x","SizeRod": "x","Price": 250},"productInfo2": {"Size": "3.250","Quantity": "16","Density": "Hard","Core": "Solid","SizeFc": "40/75","SizeRod": "114","Price": 250}}],"foamProduct": [{}],"castProducts": [{}]}', 1);
 
 INSERT INTO DecoProducts (MalCode, Size, SizeFC, SizeRod)
 VALUES
