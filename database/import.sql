@@ -2,7 +2,7 @@ CREATE DATABASE DB_PolyEurope;
 
 USE 'DB_PolyEurope';
 
-CREATE TABLE Deco (
+CREATE TABLE DecoProducts (
     ID int NOT NULL AUTO_INCREMENT,
     MalCode varchar(255),
     Size varchar(255),
@@ -12,7 +12,7 @@ CREATE TABLE Deco (
 
 );
 
-INSERT INTO Deco (MalCode, Size, SizeFC, SizeRod)
+INSERT INTO DecoProducts (MalCode, Size, SizeFC, SizeRod)
 VALUES
     ('2A', '2"', 'X', 'X'),
     ('2A+', '2.125"', 'X', 'X'),
