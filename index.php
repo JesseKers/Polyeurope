@@ -1,7 +1,8 @@
 <?php
 
-use controllers\CreateOrderController;
 use Database\Database;
+
+session_start();
 
 require 'config.php';
 require 'database/Database.php';
@@ -9,9 +10,4 @@ require 'database/Database.php';
 global $db;
 $db = new Database(...$config['database']);
 
-require 'controllers/CreateOrderController.php';
-
-$create = new CreateOrderController();
-
-$create->loadview();
-
+require 'Route.php';

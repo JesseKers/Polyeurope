@@ -42,7 +42,7 @@ VALUES
 
 INSERT INTO DecoProducts (MalCode, Size, SizeFC, SizeRod)
 VALUES
-    ('2A', '2"', 'X', 'X'),
+    ('2A', '2.000"', 'X', 'X'),
     ('2A+', '2.125"', 'X', 'X'),
     ('2B', '2.250"', 'X', 'X'),
     ('2C', '2.375"', 'X', 'X'),
