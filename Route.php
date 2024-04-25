@@ -8,7 +8,8 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
 '/' => [CreateOrderController::class, 'loadview'],
-'/createProduct' => [CreateOrderController::class, 'createOrder'],
+'/createProduct' => [CreateOrderController::class, 'createProduct'],
+'/storeOrder' => [CreateOrderController::class, 'storeOrder'],
 
 ];
 

@@ -10,7 +10,7 @@ class CreateOrderController
     {
         require 'views/CreateOrder.view.php';
     }
-    public function createOrder(): void
+    public function createProduct(): void
     {
         $product = $_POST;
         $productDetails = $this->getProductInfo($product['size']);
@@ -53,5 +53,10 @@ class CreateOrderController
             ':id' => $id,
         ];
         return $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function storeOrder()
+    {
+        $json = json_encode($_SESSION['order']);
+        var_dump($json);
     }
 }
