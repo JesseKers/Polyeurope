@@ -27,6 +27,9 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
                 </thead>
                 <tbody>
                     <?php
+                    if (!$_SESSION['order']) {
+                        $_SESSION['order'] = [];
+                    }
                     foreach ($_SESSION['order'] as $order) {?>
                     <tr>
                         <td class="border px-4 py-2"><?= $order['malCode'] ?></td>

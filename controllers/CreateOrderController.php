@@ -54,9 +54,9 @@ class CreateOrderController
         ];
         return $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function storeOrder()
+    public function storeOrder(): void
     {
         $json = json_encode($_SESSION['order']);
-        var_dump($json);
+
     }
 }
