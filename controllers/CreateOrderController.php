@@ -19,10 +19,6 @@ class CreateOrderController
                 $productDetail['SizeFC'] = 'x';
                 $productDetail['SizeRod'] = 'x';
             }
-            if ($product['core'] === 'foam' && $product['size'] >= 2.500) {
-                $productDetail['SizeFC'] = 'x';
-                $productDetail['SizeRod'] = 'x';
-            }
             switch ($product['density']) {
                 case 'hard':
                     $product['density'] = 'A85';
@@ -77,5 +73,10 @@ class CreateOrderController
 
 
         return $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function delete(): void
+    {
+        unset($_SESSION['order'][(int)$_GET['item']]);
+        header('Location: /');
     }
 }

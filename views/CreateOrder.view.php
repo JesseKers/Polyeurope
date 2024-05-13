@@ -79,7 +79,6 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
                     </tr>
                     <?php
                         $itemNum ++;
-                        echo $itemNum;
                     }
                     ?>
                 </tbody>
