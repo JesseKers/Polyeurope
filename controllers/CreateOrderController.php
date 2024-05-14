@@ -77,6 +77,12 @@ class CreateOrderController
     public function delete(): void
     {
         unset($_SESSION['order'][(int)$_GET['item']]);
+        var_dump($_SESSION['order']);
+        header('Location: /');
+    }
+    public function copy(): void
+    {
+        $_SESSION['order'] = array_merge($_SESSION['order'], [$_SESSION['order'][(int)$_GET['item']]]);
         header('Location: /');
     }
 }

@@ -2,14 +2,9 @@
 global $db;
 $title = 'Create order';
 require 'views/partials/head.view.php';
-
+require 'views/partials/header.view.php';
 $orders = $db->query('SELECT * FROM Orders')->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<body class="grid grid-cols-12">
-<header class="col-start-2 col-span-10 h-12 bg-gray-300">
-
-</header>
 <div class="col-start-2 col-span-10 bg-gray-100 my-12 rounded h-fit">
     <div class="m-4 rounded p-4 bg-gray-200">
         <table class="w-full text-center border-collapse my-4">
@@ -32,5 +27,6 @@ $orders = $db->query('SELECT * FROM Orders')->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 </div>
-</body>
-</html>
+<?php
+require 'views/partials/footer.view.php';
+?>
