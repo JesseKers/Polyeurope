@@ -10,36 +10,37 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
         <label for="size" class="col-span-2">Size</label>
         <select name="size" id="size" class="col-span-2 px-8 py-2">
             <?php foreach ($decoProducts as $product) { ?>
-                <option value="<?= $product['ID'] ?>"><?= $product['Size'] ?></option>
+                <option value="<?= $product['ID'] ?>" <?= isset($_POST['size']) && $_POST['size'] == $product['ID'] ? 'selected' : '' ?>><?= $product['Size'] ?></option>
             <?php } ?>
         </select>
 
         <label for="quantity" class="col-start-3 col-span-2 row-start-1">Quantity</label>
-        <input id="quantity" type="number" name="quantity" class="col-start-3 col-span-2 px-8 py-2" value="1" required>
+        <input id="quantity" type="number" name="quantity" class="col-start-3 col-span-2 px-8 py-2" required value="<?= isset($_POST['quantity']) ? $_POST['quantity'] : '' ?>">
 
         <label for="density" class="col-start-5 col-span-2 row-start-1">Density</label>
         <select name="density" id="density" class="col-start-5 col-span-2 px-8 py-2" required>
-            <option value="hard">Hard</option>
-            <option value="medium">Medium</option>
-            <option value="soft">Soft</option>
+            <option value="hard" <?= isset($_POST['density']) && $_POST['density'] == 'hard' ? 'selected' : '' ?>>Hard</option>
+            <option value="medium" <?= isset($_POST['density']) && $_POST['density'] == 'medium' ? 'selected' : '' ?>>Medium</option>
+            <option value="soft" <?= isset($_POST['density']) && $_POST['density'] == 'soft' ? 'selected' : '' ?>>Soft</option>
         </select>
 
-        <label for="stud" class="col-start-7 col-span-2 row-start-1" >Stud</label>
+        <label for="stud" class="col-start-7 col-span-2 row-start-1">Stud</label>
         <select name="stud" id="stud" class="col-start-7 col-span-2 px-8 py-2" required>
-            <option value="100%">100%</option>
-            <option value="75%">75%</option>
-            <option value="50%">50%</option>
-            <option value="0%">0%</option>
+            <option value="100%" <?= isset($_POST['stud']) && $_POST['stud'] == '100%' ? 'selected' : '' ?>>100%</option>
+            <option value="75%" <?= isset($_POST['stud']) && $_POST['stud'] == '75%' ? 'selected' : '' ?>>75%</option>
+            <option value="50%" <?= isset($_POST['stud']) && $_POST['stud'] == '50%' ? 'selected' : '' ?>>50%</option>
+            <option value="0%" <?= isset($_POST['stud']) && $_POST['stud'] == '0%' ? 'selected' : '' ?>>0%</option>
         </select>
 
         <label for="core" class="col-start-9 col-span-2 row-start-1">Core</label>
         <select name="core" id="core" class="col-start-9 col-span-2 px-8 py-2" required>
-            <option value="solid">Solid</option>
-            <option value="foam">Foam</option>
+            <option value="solid" <?= isset($_POST['core']) && $_POST['core'] == 'solid' ? 'selected' : '' ?>>Solid</option>
+            <option value="foam" <?= isset($_POST['core']) && $_POST['core'] == 'foam' ? 'selected' : '' ?>>Foam</option>
         </select>
 
         <input type="submit" value="Add product" class="px-4 py-2 rounded bg-customLightBlue text-sky-50 col-start-10">
     </form>
+
     <div class="m-4 rounded p-4 bg-gray-200">
         <table class="w-full text-center border-collapse my-4">
             <thead>
@@ -56,7 +57,7 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
             </thead>
             <tbody>
                 <?php
-                if (!$_SESSION['order']) {
+                if (!isset($_SESSION['order'])) {
                     $_SESSION['order'] = [];
                 }
                 $itemNum = 0;
@@ -73,7 +74,6 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
                     <td class="border px-4 py-2"><?= $order['sizeRod'] ?></td>
                     <td class="w-48">
                         <a href="/delete?item=<?=$itemNum?>" class="px-3 py-2 rounded bg-red-900 text-sky-50 col-start-9 col-span-2">Del</a>
-                        <a href="/?item=<?=$itemNum?>" class="px-3 py-2 rounded bg-blue-900 text-sky-50 col-start-9 col-span-2">Edit</a>
                         <a href="/copy?item=<?=$itemNum?>" class="px-3 py-2 rounded bg-green-900 text-sky-50 col-start-9 col-span-2">Copy</a>
                     </td>
                 </tr>
@@ -83,9 +83,30 @@ $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_AS
                 ?>
             </tbody>
         </table>
-        <a href="/storeOrder" class="px-4 py-2 rounded bg-customLightBlue text-sky-50 col-start-9 col-span-2">Store</a>
+        <button class="px-4 py-2 rounded bg-customLightBlue text-sky-50" id="show">Store</button>
     </div>
+</div>
+<div id="orderFormContainer" class="bg-customBlue rounded-lg shadow-lg p-8 absolute inset-0 m-auto w-1/2 h-fit hidden">
+    <button id="x" class="px-4 py-2 rounded bg-red-500 text-sky-50">x</button>
+    <form action="/storeOrder" class="bg-customLightBlue rounded-lg p-6 space-y-4">
+        <div>
+            <label for="orderID" class="block text-white font-bold mb-2">Order ID</label>
+            <input type="number" name="orderID" id="orderID" class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300" placeholder="Enter your order ID" required>
+        </div>
+        <div>
+            <input type="submit" value="Create" class="w-full bg-green-500 text-white p-2 rounded cursor-pointer hover:bg-green-600 transition-colors duration-300">
+        </div>
+    </form>
 </div>
 <?php
 require 'views/partials/footer.view.php';
 ?>
+<script>
+    document.getElementById('show').addEventListener('click', function() {
+        document.getElementById('orderFormContainer').classList.remove('hidden');
+    });
+    document.getElementById('x').addEventListener('click', function() {
+        document.getElementById('orderFormContainer').classList.add('hidden');
+    });
+
+</script>
