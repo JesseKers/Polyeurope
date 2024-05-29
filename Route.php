@@ -16,6 +16,9 @@ $routes = [
 '/storeOrder' => [CreateOrderController::class, 'storeOrder'],
 '/show' => [OrderController::class, 'loadView'],
 '/showOrder' => [ShowOrderController::class, 'loadView'],
+'/deleteOrder' => [ShowOrderController::class, 'delete'],
+'/delete' => [CreateOrderController::class, 'delete'],
+'/copy' => [CreateOrderController::class, 'copy'],
 
 ];
 

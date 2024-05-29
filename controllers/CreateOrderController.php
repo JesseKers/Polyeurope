@@ -19,10 +19,6 @@ class CreateOrderController
                 $productDetail['SizeFC'] = 'x';
                 $productDetail['SizeRod'] = 'x';
             }
-            if ($product['core'] === 'foam' && $product['size'] >= 2.500) {
-                $productDetail['SizeFC'] = 'x';
-                $productDetail['SizeRod'] = 'x';
-            }
             switch ($product['density']) {
                 case 'hard':
                     $product['density'] = 'A85';
@@ -45,7 +41,6 @@ class CreateOrderController
                 'sizeRod' => $productDetail['SizeRod'],
             ];
             $_SESSION['order'] = array_merge($_SESSION['order'], [$newProduct]);
-//            echo 'test';
             header('Location: /');
         }
     }
@@ -58,24 +53,30 @@ class CreateOrderController
         ];
         return $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function storeOrder()
+    public function storeOrder(): void
     {
         global $db;
-        if (!$_SESSION['order'] OR empty($_SESSION['order'])){
-            echo 'Empty order given';
-//            header('Location: /');
-        }
+
         $json = json_encode($_SESSION['order']);
         $query = "INSERT INTO Orders (OrderID, `Order`, ClientID) VALUES (:orderID, :orderJson, :clientID)";
         $params = [
-            ':orderID' => '1234',
+            ':orderID' => $_GET['orderID'],
             ':orderJson' => $json,
             ':clientID' => 1
         ];
         session_destroy();
+        header('Location: /show');
+
+        $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function delete(): void
+    {
+        unset($_SESSION['order'][(int)$_GET['item']]);
         header('Location: /');
-
-
-        return $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function copy(): void
+    {
+        $_SESSION['order'] = array_merge($_SESSION['order'], [$_SESSION['order'][(int)$_GET['item']]]);
+        header('Location: /');
     }
 }
