@@ -1,6 +1,11 @@
 <body class="grid grid-cols-12 bg-gray-50">
-<header class="col-span-12 h-fit bg-white grid grid-cols-12">
-    <img class="mx-4 h-max col-start-2 col-span-2" src="../img/polyEuropeLogo.png" alt="">
-    <a href="/show" class="py-2 px-4 h-fit w-fit mx-4 my-auto rounded bg-customLightBlue text-sky-50 col-start-5 hover:bg-green-600">All orders</a>
-    <a href="/" class="py-2 px-4 h-fit w-fit mx-4 my-auto rounded bg-customLightBlue text-sky-50 col-span-2 col-start-6">Create order</a>
+<header class="col-span-12 bg-gray-50 py-4 px-8">
+    <img class="h-12" src="../img/polyEuropeLogo.png" alt="PolyEurope Logo">
+<!--    <div class="flex space-x-4">-->
+<!--        <a href="/show" class="py-2 px-4 rounded bg-customLightBlue text-white hover:bg-green-600">All orders</a>-->
+<!--        <a href="/" class="py-2 px-4 rounded bg-customLightBlue text-white hover:bg-green-600">Create order</a>-->
+<!--        <a href="/edit-products" class="py-2 px-4 rounded bg-customLightBlue text-white hover:bg-green-600">Edit products</a>-->
+<!--    </div>-->
 </header>
+
+

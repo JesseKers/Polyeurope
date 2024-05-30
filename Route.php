@@ -1,12 +1,14 @@
 <?php
 
 use controllers\CreateOrderController;
+use controllers\EditProductsController;
 use controllers\OrderController;
 use controllers\ShowOrderController;
 
 require 'controllers/CreateOrderController.php';
 require 'controllers/OrderController.php';
 require 'controllers/ShowOrderController.php';
+require 'controllers/EditProductsController.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
@@ -19,6 +21,7 @@ $routes = [
 '/deleteOrder' => [ShowOrderController::class, 'delete'],
 '/delete' => [CreateOrderController::class, 'delete'],
 '/copy' => [CreateOrderController::class, 'copy'],
+'/EDIT' => [EditProductsController::class, 'loadView'],
 
 ];
 
