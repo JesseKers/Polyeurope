@@ -4,7 +4,7 @@ use Database\Database;
 
 session_start();
 
-require 'config.php';
+$config = require 'config.php';
 require 'database/Database.php';
 
 global $db;
