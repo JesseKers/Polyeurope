@@ -21,7 +21,7 @@ $routes = [
 '/deleteOrder' => [ShowOrderController::class, 'delete'],
 '/delete' => [CreateOrderController::class, 'delete'],
 '/copy' => [CreateOrderController::class, 'copy'],
-'/EDIT' => [EditProductsController::class, 'loadView'],
+'/edit' => [EditProductsController::class, 'loadView'],
 
 ];
 
