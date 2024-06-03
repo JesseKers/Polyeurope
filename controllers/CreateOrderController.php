@@ -67,7 +67,7 @@ class CreateOrderController
         session_destroy();
         header('Location: /show');
 
-        $db->query($query, $params)->fetchAll(PDO::FETCH_ASSOC);
+        $db->query($query, $params);
     }
     public function delete(): void
     {

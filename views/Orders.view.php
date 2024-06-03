@@ -21,11 +21,6 @@ $orders = $db->query('SELECT * FROM Orders')->fetchAll(PDO::FETCH_ASSOC);
             <tbody>
             <?php
             foreach ($orders as $order) {
-                if ($order['Order'] === "null" || $order['Order'] === "[]") {
-//                    $show = new ShowOrderController();
-//                    $show->delete($order['ID']);
-                    echo 'test';
-                }
                 ?>
                 <tr>
                     <td class="border px-4 py-2"><?= $order['OrderID'] ?></td>
