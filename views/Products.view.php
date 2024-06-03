@@ -8,8 +8,8 @@ require 'views/partials/header.view.php';
     <table>
         <thead>
             <tr>
-                <th>Mal code</th>
                 <th>Size</th>
+                <th>Mal code</th>
                 <th>Size foam core</th>
                 <th>Size rod</th>
             </tr>
@@ -20,8 +20,8 @@ require 'views/partials/header.view.php';
             foreach ($decoProducts as $product) {
             ?>
             <tr>
-                <td><?= $product['MalCode']?></td>
                 <td><?= $product['Size']?></td>
+                <td><?= $product['MalCode']?></td>
                 <td><?= $product['SizeFC']?></td>
                 <td><?= $product['SizeRod']?></td>
                 <td><a href="edit-product?ID=<?=$product['ID']?>" class="px-3 py-2 rounded bg-customBlue text-sky-50 col-start-9 col-span-2">Edit</a></td>
