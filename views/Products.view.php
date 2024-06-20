@@ -12,6 +12,7 @@ require 'views/partials/header.view.php';
                 <th>Mal code</th>
                 <th>Size foam core</th>
                 <th>Size rod</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@ require 'views/partials/header.view.php';
                 <td><?= $product['MalCode']?></td>
                 <td><?= $product['SizeFC']?></td>
                 <td><?= $product['SizeRod']?></td>
+                <td><?= $product['Price']?></td>
                 <td><a href="edit-product?ID=<?=$product['ID']?>" class="px-3 py-2 rounded bg-customBlue text-sky-50 col-start-9 col-span-2">Edit</a></td>
             </tr>
             <?php } ?>
@@ -33,4 +35,3 @@ require 'views/partials/header.view.php';
 <?php
 require 'views/partials/footer.view.php';
 ?>
-
