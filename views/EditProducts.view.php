@@ -25,6 +25,10 @@ $items = $db->query('SELECT * FROM DecoProducts WHERE id = :id', [':id' => $_GET
                 <input type="text" name="sizeRod" id="sizeRod" value="<?= $item['SizeRod']?>" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             </div>
             <div class="col-span-1">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <input type="text" name="price" id="price" value="<?= $item['Price'] ?>" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            </div>
+            <div class="col-span-1">
                 <input type="submit" name="change" id="change" value="Save" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 hover:bg-green-500">
             </div>
         <?php } ?>

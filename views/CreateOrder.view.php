@@ -6,7 +6,7 @@ require 'views/partials/header.view.php';
 ?>
     <div class="col-start-2 col-span-10 bg-gray-300 my-12 rounded h-fit">
         <form action="/createProduct" method="post" id="decoProductForm" class="m-4 rounded p-4 bg-gray-200 grid grid-cols-10 gap-4 py-4">
-            <label for="size" class="col-span-2">Size</label>
+            <label for="size" class="col-span-2">quantity</label>
             <select name="size" id="size" class="col-span-2 px-8 py-2">
                 <?php
                 $decoProducts = $db->query('SELECT * FROM DecoProducts')->fetchAll(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@ require 'views/partials/header.view.php';
                 <?php } ?>
             </select>
 
-            <label for="quantity" class="col-start-3 col-span-2 row-start-1">Quantity</label>
+            <label for="quantity" class="col-start-3 col-span-2 row-start-1">Size</label>
             <input id="quantity" type="number" name="quantity" class="col-start-3 col-span-2 px-8 py-2" value="1" required>
 
             <label for="density" class="col-start-5 col-span-2 row-start-1">Density</label>
